@@ -16,13 +16,19 @@ const component = (name: string, slug: string): NavItem => ({
 export const navigation: NavSection[] = [
   {
     title: "Fundação",
-    items: [{ name: "Design Tokens", href: "/styleguide" }],
+    items: [
+      { name: "Design Tokens", href: "/styleguide" },
+      { name: "Logotipo", href: "/styleguide/foundation/logotipo" },
+      { name: "Cores", href: "/styleguide/foundation/cores" },
+      { name: "Tipografia", href: "/styleguide/foundation/tipografia" },
+    ],
   },
   {
     title: "New",
     items: [
       component("Attachment", "attachment"),
       component("Bubble", "bubble"),
+      component("Liquid Glass", "liquid-glass"),
       component("Marker", "marker"),
       component("Message", "message"),
       component("Message Scroller", "message-scroller"),

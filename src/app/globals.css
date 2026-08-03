@@ -37,6 +37,19 @@
   --gold-900: oklch(0.385 0.066 92.34); /* #504214 */
   --gold-950: oklch(0.285 0.048 92.34); /* #32290A */
 
+  /* === DEGRADÊ DOURADO OFICIAL ===
+     Assinatura da marca em superfícies douradas. Diagonal a 45°, nunca
+     vertical. Os dois pontos ficam em hexadecimal exato — são valores
+     fechados da identidade, e converter para OKLCH introduziria desvio de
+     arredondamento numa cor que precisa bater com o material impresso. */
+  --gold-gradient-from: #d4c575;
+  --gold-gradient-to: #bca14c;
+  --gold-gradient: linear-gradient(
+    45deg,
+    var(--gold-gradient-from),
+    var(--gold-gradient-to)
+  );
+
   /* === ESCALA NEUTRA — CINZA COM TEMPERATURA AZUL (hue 240) === */
   --neutral-50: oklch(0.985 0.003 240); /* #F8FAFC */
   --neutral-100: oklch(0.968 0.004 240); /* #F2F5F7 */
@@ -87,8 +100,18 @@
   --input: var(--neutral-300);
   --ring: var(--brand-600);
 
-  /* === RAIO === */
+  /* === RAIO ===
+     `--radius` (12px) é a unidade de base, da qual saem os cantos pequenos
+     de controle: input, botão, badge.
+
+     `--radius-marca` é o canto oficial da identidade — 25px. É ele que veste
+     card, painel, mídia e qualquer superfície grande, e está exposto como
+     `rounded-2xl`. Fica como token separado, e não como múltiplo de
+     `--radius`, justamente para poder ser ajustado sozinho: mudar o valor
+     aqui reescreve todo `rounded-2xl` do projeto de uma vez, sem tocar nos
+     cantos pequenos. */
   --radius: 0.75rem;
+  --radius-marca: 1.5625rem; /* 25px — PADRÃO DA MARCA */
 
   /* === GRÁFICOS === */
   --chart-1: var(--brand-900);
@@ -138,6 +161,16 @@
     0 8px 16px -8px oklch(0.225 0.047 240.92 / 0.08);
   --elevation-2xl: 0 32px 64px -16px oklch(0.225 0.047 240.92 / 0.24);
   --elevation-gold: 0 8px 24px -8px oklch(0.7246 0.1082 92.34 / 0.5);
+
+  /* === LIQUID GLASS — material óptico ===
+     A variante Regular da Apple ajusta blur *e luminosidade* do fundo para
+     garantir legibilidade. Sem acesso aos pixels do backdrop, --glass-adjust
+     faz essa normalização de forma aproximada e estática. */
+  --glass-radius: 30px;
+  --glass-tint: oklch(1 0 0);
+  --glass-adjust: contrast(1.08) brightness(1.06);
+  --glass-rim: oklch(1 0 0);
+  --glass-shade: oklch(0.225 0.047 240.92);
 }
 
 .dark {
@@ -210,6 +243,12 @@
     0 24px 48px -12px oklch(0 0 0 / 0.5), 0 8px 16px -8px oklch(0 0 0 / 0.35);
   --elevation-2xl: 0 32px 64px -16px oklch(0 0 0 / 0.6);
   --elevation-gold: 0 8px 28px -8px oklch(0.7246 0.1082 92.34 / 0.35);
+
+  /* Vidro escuro tingido de azul da marca, em vez de cinza neutro. */
+  --glass-tint: oklch(0.32 0.05 240.92);
+  --glass-adjust: contrast(1.06) brightness(0.94);
+  --glass-rim: oklch(0.98 0.01 92);
+  --glass-shade: oklch(0 0 0);
 }
 
 @theme inline {
@@ -306,14 +345,16 @@
   --color-neutral-900: var(--neutral-900);
   --color-neutral-950: var(--neutral-950);
 
-  /* Raio — cantos generosos, conforme a evolução da marca */
-  --radius-sm: calc(var(--radius) * 0.5);
-  --radius-md: calc(var(--radius) * 0.75);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.35);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.4);
-  --radius-4xl: calc(var(--radius) * 3.2);
+  /* Raio — cantos generosos, conforme a evolução da marca.
+     Até `xl` a escala deriva de --radius (controles). De `2xl` para cima ela
+     deriva de --radius-marca (superfícies), com 2xl = 25px como padrão. */
+  --radius-sm: calc(var(--radius) * 0.5); /* 6px */
+  --radius-md: calc(var(--radius) * 0.75); /* 9px */
+  --radius-lg: var(--radius); /* 12px */
+  --radius-xl: calc(var(--radius) * 1.35); /* 16px */
+  --radius-2xl: var(--radius-marca); /* 25px — PADRÃO */
+  --radius-3xl: calc(var(--radius-marca) * 1.2); /* 30px */
+  --radius-4xl: calc(var(--radius-marca) * 1.6); /* 40px */
 
   /* Sombras */
   --shadow-2xs: var(--elevation-2xs);
@@ -324,6 +365,13 @@
   --shadow-xl: var(--elevation-xl);
   --shadow-2xl: var(--elevation-2xl);
   --shadow-gold: var(--elevation-gold);
+
+  /* Curvas de movimento.
+     `marca` é a mesma curva que o liquid glass já usa — decelera forte e
+     assenta sem overshoot. Vira token para que entrada de seção, hover de card
+     e material de vidro compartilhem o mesmo tempo. */
+  --ease-marca: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-saida: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
@@ -349,6 +397,18 @@
   line-height: 1.15;
 }
 
+/* Degradê dourado oficial — bg-gold-gradient */
+@utility bg-gold-gradient {
+  background-image: var(--gold-gradient);
+}
+
+/* Texto preenchido com o degradê dourado */
+@utility text-gold-gradient {
+  background-image: var(--gold-gradient);
+  background-clip: text;
+  color: transparent;
+}
+
 /* Filete dourado — recurso gráfico recorrente da identidade */
 @utility rule-gold {
   background-image: linear-gradient(
@@ -357,4 +417,236 @@
     var(--gold-500),
     transparent
   );
+}
+
+/* ==========================================================================
+   MOTION DE SCROLL
+   Uma seção entra uma única vez, com fade e um deslocamento curto. O estado
+   inicial mora aqui no CSS; o JS só marca `data-revelar="visivel"` quando o
+   IntersectionObserver dispara. Assim a transição roda inteira no compositor —
+   só `opacity` e `transform`, nada que force layout durante o scroll.
+   ========================================================================== */
+
+@layer components {
+  [data-revelar] {
+    opacity: 0;
+    transform: translate3d(var(--revelar-x, 0), var(--revelar-y, 0), 0)
+      scale(var(--revelar-escala, 1));
+    transition:
+      opacity var(--revelar-duracao, 620ms) var(--ease-saida)
+        var(--revelar-atraso, 0ms),
+      transform var(--revelar-duracao, 620ms) var(--ease-saida)
+        var(--revelar-atraso, 0ms);
+  }
+
+  [data-revelar="visivel"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Deslocamentos curtos de propósito: o movimento orienta o olho, não
+     transporta o conteúdo pela tela. */
+  [data-revelar][data-variante="subir"] {
+    --revelar-y: 1.25rem;
+  }
+  [data-revelar][data-variante="esquerda"] {
+    --revelar-x: -1.75rem;
+  }
+  [data-revelar][data-variante="direita"] {
+    --revelar-x: 1.75rem;
+  }
+  [data-revelar][data-variante="zoom"] {
+    --revelar-escala: 0.965;
+  }
+
+  /* Deslocamento lateral vira vertical no celular: numa tela estreita, entrar
+     pela lateral cria overflow horizontal e lê como erro de layout. */
+  @media (width < 48rem) {
+    [data-revelar][data-variante="esquerda"],
+    [data-revelar][data-variante="direita"] {
+      --revelar-x: 0;
+      --revelar-y: 1rem;
+    }
+  }
+
+  /* Parallax e tilt: o JS escreve as custom properties, o CSS as compõe numa
+     transform só. Sem transição — o valor já vem interpolado pelo scroll. */
+  [data-parallax] {
+    transform: translate3d(0, var(--parallax-y, 0px), 0)
+      rotate(var(--parallax-rotacao, 0deg));
+  }
+
+  /* Reduce Motion: o conteúdo nasce no lugar e nada se move. Sem exceção. */
+  @media (prefers-reduced-motion: reduce) {
+    [data-revelar],
+    [data-revelar="visivel"] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    [data-parallax] {
+      transform: none;
+    }
+  }
+}
+
+/* ==========================================================================
+   LIQUID GLASS
+   O deslocamento óptico vive num filtro SVG gerado em runtime; tudo aqui são
+   as camadas que ficam por cima dele — tint, borda, grão e sombra.
+   ========================================================================== */
+
+@property --lg-rim {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0.4;
+}
+
+@layer components {
+  .liquid-glass {
+    --lg-rim-hair: color-mix(
+      in oklab,
+      var(--glass-rim) calc(var(--lg-rim, 0.4) * 58%),
+      transparent
+    );
+    --lg-rim-soft: color-mix(
+      in oklab,
+      var(--glass-rim) calc(var(--lg-rim, 0.4) * 26%),
+      transparent
+    );
+    --lg-core-shade: color-mix(
+      in oklab,
+      var(--glass-shade) calc(var(--lg-rim, 0.4) * 18%),
+      transparent
+    );
+
+    position: relative;
+    isolation: isolate;
+
+    -webkit-backdrop-filter: var(--lg-backdrop);
+    backdrop-filter: var(--lg-backdrop);
+
+    /* Grão, tint e camada de dimming. Backgrounds sempre pintam abaixo do
+       conteúdo, então nada disso interfere na legibilidade do texto nem exige
+       acrobacia de z-index. */
+    background-image:
+      var(--lg-noise-image, none),
+      linear-gradient(var(--lg-tint-layer), var(--lg-tint-layer)),
+      linear-gradient(var(--lg-dim-layer), var(--lg-dim-layer));
+    background-blend-mode: overlay, normal, normal;
+
+    /* A borda é uniforme em todo o perímetro. Um vidro real capta luz ao longo
+       de toda a aresta; enviesar para um lado lê como sombra projetada, não
+       como aresta. Os dois últimos inset compõem a espessura — um halo interno
+       claro e um núcleo levemente sombreado. */
+    box-shadow:
+      var(--lg-shadow, none),
+      inset 0 0 0 0.5px var(--lg-rim-hair),
+      inset 0 0 calc(var(--lg-depth, 16px) * 0.55)
+        calc(var(--lg-depth, 16px) * -0.35) var(--lg-rim-soft),
+      inset 0 0 calc(var(--lg-depth, 16px) * 2.4)
+        calc(var(--lg-depth, 16px) * -1.1) var(--lg-core-shade);
+
+    transform: translateZ(0);
+  }
+
+  /* Espessura graduada no tier `frosted`.
+     Safari e Firefox não executam o deslocamento geométrico, então a percepção
+     de espessura vem de um segundo nível de blur concentrado nas bordas. Vive
+     em z-index negativo para ficar atrás do conteúdo — caso contrário o próprio
+     backdrop-filter borraria o texto do componente. */
+  .liquid-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: none;
+    border-radius: inherit;
+    pointer-events: none;
+
+    -webkit-backdrop-filter: blur(var(--lg-ring-blur, 8px));
+    backdrop-filter: blur(var(--lg-ring-blur, 8px));
+
+    /* União de quatro rampas, uma por aresta: opaco junto à borda, transparente
+       no miolo. A largura da faixa é medida em px para não deformar em
+       elementos muito largos ou muito altos. */
+    -webkit-mask-image:
+      linear-gradient(to right, #000, transparent var(--lg-band, 40px)),
+      linear-gradient(to left, #000, transparent var(--lg-band, 40px)),
+      linear-gradient(to bottom, #000, transparent var(--lg-band, 40px)),
+      linear-gradient(to top, #000, transparent var(--lg-band, 40px));
+    mask-image:
+      linear-gradient(to right, #000, transparent var(--lg-band, 40px)),
+      linear-gradient(to left, #000, transparent var(--lg-band, 40px)),
+      linear-gradient(to bottom, #000, transparent var(--lg-band, 40px)),
+      linear-gradient(to top, #000, transparent var(--lg-band, 40px));
+    mask-composite: add, add, add, add;
+  }
+
+  .liquid-glass[data-tier="frosted"]::before {
+    display: block;
+  }
+
+  /* Sem transparência: superfície opaca do design system, zero filtros.
+     Espelha o que o iOS faz sob Reduce Transparency. */
+  .liquid-glass[data-tier="solid"] {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-image: none;
+    background-color: var(--card);
+    box-shadow: var(--lg-shadow, none);
+    border: 1px solid var(--border);
+  }
+
+  .liquid-glass[data-elevation="none"] {
+    --lg-shadow: none;
+  }
+  .liquid-glass[data-elevation="sm"] {
+    --lg-shadow: var(--elevation-sm);
+  }
+  .liquid-glass[data-elevation="md"] {
+    --lg-shadow: var(--elevation-md);
+  }
+  .liquid-glass[data-elevation="lg"] {
+    --lg-shadow: var(--elevation-lg);
+  }
+  .liquid-glass[data-elevation="xl"] {
+    --lg-shadow: var(--elevation-xl);
+  }
+
+  /* O material da Apple recua ao toque. Só transform e uma custom property
+     registrada, então tudo resolve no compositor. */
+  .liquid-glass[data-interactive] {
+    transition:
+      transform 240ms cubic-bezier(0.32, 0.72, 0, 1),
+      --lg-rim 240ms cubic-bezier(0.32, 0.72, 0, 1);
+    cursor: pointer;
+  }
+  .liquid-glass[data-interactive]:active {
+    transform: translateZ(0) scale(0.982);
+  }
+
+  .liquid-glass[data-variant="clear"] {
+    --lg-core-shade: transparent;
+  }
+
+  /* Increase Contrast: aresta sólida em vez de insinuada. */
+  @media (prefers-contrast: more) {
+    .liquid-glass {
+      outline: 1px solid var(--border);
+      outline-offset: -1px;
+    }
+  }
+
+  /* Reduce Motion elimina o lensing dinâmico no iOS. Aqui o lensing estático
+     permanece — é a identidade do material — mas nada mais se move. */
+  @media (prefers-reduced-motion: reduce) {
+    .liquid-glass[data-interactive] {
+      transition: none;
+    }
+    .liquid-glass[data-interactive]:active {
+      transform: translateZ(0);
+    }
+  }
 }

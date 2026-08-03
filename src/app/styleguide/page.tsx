@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CheckCircle2Icon, InfoIcon, TriangleAlertIcon } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRightIcon,
+  CheckCircle2Icon,
+  InfoIcon,
+  TriangleAlertIcon,
+} from "lucide-react";
 
-import { BrandLogo, Symbol, Wordmark, brandAssets } from "@/components/brand/logo";
+import { Symbol, Wordmark, brandAssets } from "@/components/brand/logo";
+import { AjusteEstampa } from "@/components/styleguide/ajuste-estampa";
 import { Section, Subsection, Swatch, TokenCard } from "@/components/styleguide/section";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -109,7 +116,14 @@ const radii = [
   { name: "rounded-md", hint: "9px", className: "rounded-md" },
   { name: "rounded-lg", hint: "12px · --radius", className: "rounded-lg" },
   { name: "rounded-xl", hint: "16px", className: "rounded-xl" },
-  { name: "rounded-2xl", hint: "22px", className: "rounded-2xl" },
+  {
+    name: "rounded-2xl",
+    hint: "25px · --radius-marca",
+    className: "rounded-2xl",
+    padrao: true,
+  },
+  { name: "rounded-3xl", hint: "30px", className: "rounded-3xl" },
+  { name: "rounded-4xl", hint: "40px", className: "rounded-4xl" },
   { name: "rounded-full", hint: "pill", className: "rounded-full" },
 ];
 
@@ -145,9 +159,19 @@ export default function StyleguidePage() {
           src={brandAssets.pattern[1]}
           alt=""
           aria-hidden
+          data-estampa="capa"
           width={4085}
           height={3154}
-          className="pointer-events-none absolute -top-40 -right-40 w-[720px] opacity-15"
+          className="pointer-events-none absolute -top-[177px] -right-[212px] w-[740px] opacity-40"
+        />
+
+        {/* Só em desenvolvimento: some do bundle de produção. Os valores de
+            `padrao` espelham as classes acima, para o "Zerar" voltar ao que
+            está escrito no código. */}
+        <AjusteEstampa
+          alvo="capa"
+          rotulo="estampa da capa"
+          padrao={{ top: -177, right: -212, largura: 740, opacidade: 40 }}
         />
         <div className="relative flex flex-col gap-5">
           <Wordmark variant="dourado" height={92} priority />
@@ -177,29 +201,29 @@ export default function StyleguidePage() {
       <Section
         id="marca"
         title="Marca"
-        description="Assinaturas oficiais, símbolo e estampa. Use a versão azul sobre fundos claros e a dourada sobre o azul institucional."
+        description="Assinaturas oficiais, símbolo e estampa. Sobre o degradê dourado a marca vai em azul; sobre o azul institucional, em dourado."
       >
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="flex h-48 items-center justify-center rounded-xl border border-border bg-white p-6">
+          <div className="flex h-48 items-center justify-center rounded-2xl border border-gold-600/30 bg-gold-gradient p-6">
             <Wordmark variant="azul" height={80} />
           </div>
-          <div className="flex h-48 items-center justify-center rounded-xl border border-border bg-brand-900 p-6">
+          <div className="flex h-48 items-center justify-center rounded-2xl border border-border bg-brand-900 p-6">
             <Wordmark variant="dourado" height={80} />
           </div>
         </div>
 
         <Subsection title="Símbolo" hint="preenchido e vazado">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            <div className="flex h-32 items-center justify-center rounded-xl border border-border bg-white">
+            <div className="flex h-32 items-center justify-center rounded-2xl border border-gold-600/30 bg-gold-gradient">
               <Symbol variant="azul" size={64} />
             </div>
-            <div className="flex h-32 items-center justify-center rounded-xl border border-border bg-white">
+            <div className="flex h-32 items-center justify-center rounded-2xl border border-gold-600/30 bg-gold-gradient">
               <Symbol variant="vazado-azul" size={64} />
             </div>
-            <div className="flex h-32 items-center justify-center rounded-xl border border-border bg-brand-900">
+            <div className="flex h-32 items-center justify-center rounded-2xl border border-border bg-brand-900">
               <Symbol variant="dourado" size={64} />
             </div>
-            <div className="flex h-32 items-center justify-center rounded-xl border border-border bg-brand-900">
+            <div className="flex h-32 items-center justify-center rounded-2xl border border-border bg-brand-900">
               <Symbol variant="vazado-dourado" size={64} />
             </div>
           </div>
@@ -214,7 +238,7 @@ export default function StyleguidePage() {
                 alt={`Foto de perfil ${n}`}
                 width={96}
                 height={96}
-                className="rounded-xl border border-border"
+                className="rounded-2xl border border-border"
               />
             ))}
           </div>
@@ -222,10 +246,10 @@ export default function StyleguidePage() {
 
         <Subsection
           title="Estampa"
-          hint="dourada sobre azul · azul sobre claro"
+          hint="dourada sobre azul · azul sobre o degradê"
         >
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="relative h-48 overflow-hidden rounded-xl border border-border bg-brand-900">
+            <div className="relative h-48 overflow-hidden rounded-2xl border border-border bg-brand-900">
               <Image
                 src={brandAssets.pattern[1]}
                 alt="Estampa dourada"
@@ -234,7 +258,7 @@ export default function StyleguidePage() {
                 className="absolute -top-6 -right-10 w-[420px] opacity-70"
               />
             </div>
-            <div className="relative h-48 overflow-hidden rounded-xl border border-border bg-white">
+            <div className="relative h-48 overflow-hidden rounded-2xl border border-gold-600/30 bg-gold-gradient">
               <Image
                 src={brandAssets.pattern[2]}
                 alt="Estampa azul"
@@ -245,6 +269,13 @@ export default function StyleguidePage() {
             </div>
           </div>
         </Subsection>
+
+        <Button asChild variant="outline" className="w-fit">
+          <Link href="/styleguide/foundation/logotipo">
+            Ver todos os ativos e baixar
+            <ArrowRightIcon data-icon="inline-end" />
+          </Link>
+        </Button>
       </Section>
 
       <Separator />
@@ -253,7 +284,7 @@ export default function StyleguidePage() {
       <Section
         id="cores"
         title="Cores"
-        description="Escalas geradas em OKLCH a partir das duas cores oficiais, preservando o matiz original em todos os passos."
+        description="Escalas geradas em OKLCH a partir das duas cores oficiais, preservando o matiz original em todos os passos. As regras de uso de cada faixa, os pares de contraste verificados e a inversão do tema escuro estão na página dedicada."
       >
         <Subsection title="Azul institucional" hint="--brand-50 → --brand-950">
           <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 lg:grid-cols-11">
@@ -288,6 +319,19 @@ export default function StyleguidePage() {
           <p className="text-xs text-muted-foreground">
             <span className="font-mono">--gold-500</span> é a cor oficial da
             marca (#BEA450).
+          </p>
+        </Subsection>
+
+        <Subsection
+          title="Degradê dourado"
+          hint="--gold-gradient · 45° · #D4C575 → #BCA14C"
+        >
+          <div className="h-32 rounded-2xl border border-gold-600/30 bg-gold-gradient" />
+          <p className="text-xs text-muted-foreground">
+            Assinatura dourada da marca. Sempre diagonal a 45°, nunca vertical.
+            Use <span className="font-mono">bg-gold-gradient</span> em
+            superfícies e <span className="font-mono">text-gold-gradient</span>{" "}
+            em texto.
           </p>
         </Subsection>
 
@@ -331,6 +375,13 @@ export default function StyleguidePage() {
             ))}
           </div>
         </Subsection>
+
+        <Button asChild variant="outline" className="w-fit">
+          <Link href="/styleguide/foundation/cores">
+            Regras de uso, pares de contraste e dark mode
+            <ArrowRightIcon data-icon="inline-end" />
+          </Link>
+        </Button>
       </Section>
 
       <Separator />
@@ -341,53 +392,48 @@ export default function StyleguidePage() {
         title="Tipografia"
         description="Trajan Pro para títulos e assinaturas (capitulares da marca); Inter para textos, interface e leitura longa; Geist Mono para código e valores."
       >
-        <Subsection title="Trajan Pro" hint="font-display · 400 / 700">
-          <div className="flex flex-col gap-4 rounded-xl border border-border bg-card p-8">
-            <p className="font-display text-5xl tracking-[0.03em]">
-              Souza &amp; Souza
-            </p>
-            <p className="font-display text-3xl tracking-[0.06em]">
-              Advocacia e Assessoria
-            </p>
-            <p className="font-display text-xl font-bold tracking-[0.1em]">
-              O refinamento de uma marca clássica
-            </p>
-            <p className="font-mono text-xs text-muted-foreground">
-              font-display · TrajanPro-Regular.ttf / TrajanPro-Bold.otf
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="flex flex-col gap-3 rounded-2xl border border-gold-500/40 bg-card p-6">
+            <span className="font-display text-4xl">Aa</span>
+            <div className="h-px w-12 rule-gold" />
+            <span className="text-sm font-semibold">Trajan Pro</span>
+            <span className="font-mono text-[11px] text-muted-foreground">
+              font-display · 400 / 700
+            </span>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Só capitulares: assinatura, título curto, numeral de destaque.
             </p>
           </div>
-        </Subsection>
+          <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-6">
+            <span className="text-4xl font-semibold tracking-tight">Aa</span>
+            <div className="h-px w-12 bg-border" />
+            <span className="text-sm font-semibold">Inter</span>
+            <span className="font-mono text-[11px] text-muted-foreground">
+              font-sans · 400 / 500 / 600
+            </span>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Corpo, interface e leitura longa. Mais de 90% do texto do site.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-6">
+            <span className="font-mono text-4xl">Aa</span>
+            <div className="h-px w-12 bg-border" />
+            <span className="text-sm font-semibold">Geist Mono</span>
+            <span className="font-mono text-[11px] text-muted-foreground">
+              font-mono · 400
+            </span>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Token, código e número estruturado.
+            </p>
+          </div>
+        </div>
 
-        <Subsection title="Inter" hint="font-sans · texto e interface">
-          <div className="flex flex-col gap-4 rounded-xl border border-border bg-card p-8">
-            <p className="text-4xl font-semibold tracking-tight">
-              Display · 36px / semibold
-            </p>
-            <p className="text-2xl font-semibold tracking-tight">
-              Título · 24px / semibold
-            </p>
-            <p className="text-lg font-medium">Subtítulo · 18px / medium</p>
-            <p className="text-base">
-              Corpo · 16px / regular — A transição para a nova identidade foca na
-              suavização das formas, mantendo a solidez inerente ao segmento
-              jurídico.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Apoio · 14px / muted-foreground
-            </p>
-            <p className="text-xs tracking-[0.14em] text-muted-foreground uppercase">
-              Overline · 12px / tracking largo
-            </p>
-          </div>
-        </Subsection>
-
-        <Subsection title="Geist Mono" hint="font-mono · dados e código">
-          <div className="rounded-xl border border-border bg-card p-8">
-            <p className="font-mono text-sm">
-              --primary: oklch(0.3112 0.0623 240.92); /* #0C344D */
-            </p>
-          </div>
-        </Subsection>
+        <Button asChild variant="outline" className="w-fit">
+          <Link href="/styleguide/foundation/tipografia">
+            Ver a escala completa, estilo por estilo
+            <ArrowRightIcon data-icon="inline-end" />
+          </Link>
+        </Button>
       </Section>
 
       <Separator />
@@ -396,16 +442,46 @@ export default function StyleguidePage() {
       <Section
         id="raio"
         title="Raio"
-        description="A evolução da marca aumentou o raio de curvatura dos cantos. A base é --radius: 0.75rem (12px)."
+        description="A escala tem dois centros. Até rounded-xl ela deriva de --radius (12px) e veste os controles: botão, input, badge. De rounded-2xl para cima ela deriva de --radius-marca (25px) e veste as superfícies: card, painel, mídia, seção."
       >
-        <div className="grid grid-cols-3 gap-4 sm:grid-cols-6">
+        <div className="rounded-2xl border border-gold-500/40 bg-accent/40 p-6 shadow-gold">
+          <div className="flex flex-wrap items-center gap-6">
+            <div className="h-24 w-40 shrink-0 rounded-2xl border border-gold-600/30 bg-gold-gradient" />
+            <div className="flex flex-col gap-2">
+              <span className="font-mono text-xs tracking-wide text-muted-foreground uppercase">
+                Padrão da marca
+              </span>
+              <p className="text-2xl font-semibold tracking-tight">
+                25px · <span className="font-mono text-xl">rounded-2xl</span>
+              </p>
+              <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">
+                É o canto oficial de toda superfície grande. O valor vive em{" "}
+                <span className="font-mono text-xs">--radius-marca</span>, no{" "}
+                <span className="font-mono text-xs">globals.css</span>: mudá-lo
+                ali reescreve todo <span className="font-mono text-xs">rounded-2xl</span>{" "}
+                do projeto de uma vez, sem tocar nos cantos pequenos de
+                controle. Nenhum arquivo repete o número.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-8">
           {radii.map((r) => (
             <div key={r.name} className="flex flex-col items-center gap-2">
               <div
-                className={`h-20 w-full border border-border bg-secondary ${r.className}`}
+                className={`h-20 w-full border bg-secondary ${
+                  r.padrao ? "border-gold-500 ring-2 ring-gold-500/25" : "border-border"
+                } ${r.className}`}
               />
-              <span className="font-mono text-[11px]">{r.name}</span>
-              <span className="text-[11px] text-muted-foreground">{r.hint}</span>
+              <span
+                className={`font-mono text-[11px] ${r.padrao ? "font-bold" : ""}`}
+              >
+                {r.name}
+              </span>
+              <span className="text-center text-[11px] text-muted-foreground">
+                {r.hint}
+              </span>
             </div>
           ))}
         </div>
@@ -605,9 +681,23 @@ export default function StyleguidePage() {
         </Subsection>
       </Section>
 
-      <footer className="flex items-center justify-between border-t border-border pt-8 text-xs text-muted-foreground">
-        <BrandLogo height={28} />
-        <span>Design system · tokens em src/app/globals.css</span>
+      <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground">
+        <Symbol variant="dourado" size={32} />
+        <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span>Design system · tokens em src/app/globals.css</span>
+          <span aria-hidden>·</span>
+          <span>
+            Criado por{" "}
+            <a
+              href="https://www.chuv.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-foreground underline-offset-4 transition-colors hover:text-gold-700 hover:underline dark:hover:text-gold-400"
+            >
+              Chuv Studio
+            </a>
+          </span>
+        </span>
       </footer>
     </div>
   );

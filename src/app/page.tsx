@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 
-import { BrandLogo } from "@/components/brand/logo";
+import { brandAssets, BrandSymbol } from "@/components/brand/logo";
 import { ModeToggle } from "@/components/mode-toggle";
+import { AjusteEstampa } from "@/components/site2/ajuste-estampa";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,78 +13,92 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 
-const tokens = [
-  { name: "brand-900", hex: "#0C344D", className: "bg-brand-900" },
-  { name: "gold-500", hex: "#BEA450", className: "bg-gold-500" },
-  { name: "background", hex: "surface", className: "bg-background" },
-  { name: "muted", hex: "surface", className: "bg-muted" },
-];
+/** Dimensões nativas da estampa, iguais nos dois arquivos. */
+const ESTAMPA = { w: 4085, h: 3154 };
+
+/**
+ * Posição da estampa no hero, no mesmo sistema que o `AjusteEstampa` manipula:
+ * `left`/`bottom` em % do bloco e largura em `vw`. Mantenha os dois lados em
+ * sincronia — este objeto é o que o botão "Zerar" do painel usa como origem.
+ */
+const ESTAMPA_POSICAO = { left: -127.4, bottom: -236.4, largura: 190 };
 
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
       <header className="border-b border-border">
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
-          <BrandLogo height={28} />
+          <BrandSymbol size={32} />
           <ModeToggle />
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-16">
-        <div className="flex flex-col gap-4">
-          <Badge variant="secondary" className="w-fit">
-            Fundação pronta
-          </Badge>
-          <h1 className="font-display text-4xl tracking-[0.04em] text-balance">
-            Design System Souza &amp; Souza
-          </h1>
-          <div className="h-px w-24 rule-gold" />
-          <p className="max-w-xl text-muted-foreground">
-            Tokens extraídos da identidade da marca — azul{" "}
-            <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
-              #0C344D
-            </code>
-            , dourado{" "}
-            <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
-              #BEA450
-            </code>{" "}
-            e capitulares Trajan Pro — aplicados sobre shadcn/ui.
-          </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Button asChild>
-              <Link href="/styleguide">
-                Abrir styleguide
-                <ArrowRightIcon />
-              </Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/styleguide#componentes">Ver componentes</Link>
-            </Button>
-          </div>
-        </div>
+      <main className="flex-1">
+        {/* Hero. O degradê é fixo nos dois temas, então tudo por cima dele usa
+            a cor de texto da superfície azul, não o `foreground` do tema. */}
+        <section className="relative isolate overflow-clip bg-linear-30 from-brand-950 to-brand-900 text-navy-foreground">
+          <Image
+            src={brandAssets.pattern[1]}
+            alt=""
+            aria-hidden
+            data-estampa="home"
+            width={ESTAMPA.w}
+            height={ESTAMPA.h}
+            unoptimized
+            priority
+            className="pointer-events-none absolute -bottom-[236.4%] -left-[127.4%] -z-10 w-[190vw] max-w-none opacity-70"
+          />
 
-        <Separator className="my-12" />
+          <AjusteEstampa
+            alvo="home"
+            rotulo="estampa home"
+            padrao={ESTAMPA_POSICAO}
+          />
 
-        <section className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {tokens.map((token) => (
-            <div key={token.name} className="flex flex-col gap-2">
-              <div
-                className={`h-20 w-full rounded-lg border border-border ${token.className}`}
-              />
-              <span className="font-mono text-xs">--{token.name}</span>
-              <span className="font-mono text-xs text-muted-foreground">
-                {token.hex}
-              </span>
+          <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-6 py-24 text-center md:py-32">
+            <Badge
+              variant="outline"
+              className="border-navy-foreground/30 text-navy-foreground"
+            >
+              Pronto para usar
+            </Badge>
+
+            <h1 className="font-display text-5xl tracking-[0.04em] text-balance sm:text-6xl lg:text-7xl">
+              Design System Souza &amp; Souza
+            </h1>
+
+            <div className="h-px w-24 rule-gold" />
+
+            <p className="max-w-xl text-pretty text-navy-foreground/75">
+              Seja bem-vindo ao design system da marca. Cor, tipografia e mais
+              de 60 componentes prontos para montar qualquer página sem sair da
+              identidade.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-3 pt-2">
+              <Button
+                asChild
+                className="bg-gold-gradient text-brand-950 hover:opacity-90"
+              >
+                <Link href="/styleguide">
+                  Abrir styleguide
+                  <ArrowRightIcon />
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                asChild
+                className="border-navy-foreground/30 bg-transparent text-navy-foreground hover:bg-navy-foreground/10 hover:text-navy-foreground"
+              >
+                <Link href="/styleguide#componentes">Ver componentes</Link>
+              </Button>
             </div>
-          ))}
+          </div>
         </section>
 
-        <Separator className="my-12" />
-
-        <section className="grid gap-4 sm:grid-cols-2">
-          <Card>
+        <section className="mx-auto grid w-full max-w-3xl gap-4 px-6 py-16 sm:grid-cols-2">
+          <Card className="text-center">
             <CardHeader>
               <CardTitle>Tokens</CardTitle>
               <CardDescription>
@@ -91,7 +107,7 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="text-center">
             <CardHeader>
               <CardTitle>Ativos da marca</CardTitle>
               <CardDescription>
