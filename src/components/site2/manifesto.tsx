@@ -91,7 +91,7 @@ export function Manifesto() {
               variant="link"
               className="mt-8 h-auto px-0 text-base text-brand-950 decoration-brand-950/40"
             >
-              <Link href="/site/sobre-nos">
+              <Link href="/site-v1/sobre-nos">
                 Conhecer o escritório
                 <ArrowRightIcon aria-hidden />
               </Link>

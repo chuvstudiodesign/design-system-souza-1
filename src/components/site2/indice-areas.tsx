@@ -34,11 +34,11 @@ const ESTAMPA = { w: 4085, h: 3154 };
 const areasComImagem = areasDoDireito.filter((area) => area.imagem);
 
 /**
- * Por padrão cada linha é um link para a página de serviços. A `/site4` precisa
+ * Por padrão cada linha é um link para a página de serviços. A `/site-v4` precisa
  * que algumas áreas abram um diálogo no lugar disso, então a linha aceita virar
  * botão — mas só para os slugs que o consumidor listar em `areasComDialogo`.
  * Quem não passa nada continua com a lista de links de antes, que é o que
- * `/site2` e `/site3` renderizam.
+ * `/site-v2` e `/site-v3` renderizam.
  */
 export function IndiceAreas({
   areasComDialogo,
@@ -163,7 +163,7 @@ export function IndiceAreas({
                       {conteudo}
                     </button>
                   ) : (
-                    <Link href="/site/servicos" {...comuns}>
+                    <Link href="/site-v1/servicos" {...comuns}>
                       {conteudo}
                     </Link>
                   )}

@@ -94,3 +94,43 @@ Um `metadata` por rota. Título no padrão `<Página> — Souza & Souza Advocaci
 **Exatamente um `<h1>` por página.** No site velho só a home tem `h1`; as outras 6 não têm nenhum — os títulos são `h2` de widget do Elementor.
 
 Vale incluir JSON-LD `LegalService` com endereço, telefone e horário — é um escritório de advocacia local, e busca local é o principal canal.
+
+---
+
+## Variação 5 (`/site5`) — copy novo de 02/SET/2026
+
+**Tudo acima vale para `/site`–`/site4`.** A variação 5 tem fonte própria e regras próprias. Quando a tarefa for em `/site5`, esta seção prevalece sobre qualquer decisão anterior.
+
+### Fonte
+
+| Arquivo | O que tem |
+|---|---|
+| `Material Site/Textos do site Versão Inicial 02_SET_2026.docx` | Original do cliente |
+| `Site/paginas-v5/00-texto-integral.txt` | Transcrição literal do docx |
+| `Site/paginas-v5/01-home.md` … `05-contato.md` | Uma página por arquivo |
+| `src/lib/site5/conteudo.ts` / `contato.ts` | Tudo tipado — **importe daqui** |
+| `public/site5/espaco/`, `public/site5/equipe/` | Fotos reais do escritório e das advogadas, em WebP (catálogo em `fotosEspaco`) |
+
+### Rotas e menu
+
+`/site5` · `/site5/sobre-nos` · `/site5/profissionais` · `/site5/servicos` · `/site5/contato`
+Menu: Home · Sobre nós · Profissionais · Serviços · Contato (`src/components/site5/navegacao.ts`).
+
+### O que muda em relação ao site 1–4
+
+- **Publicações volta** na home — bloco com título, texto e botão "Acompanhe nossas publicações" que leva ao Instagram. Sem feed.
+- **Métricas novas** com período: +5.000 atendimentos, +4.000 processos com êxito, +3.000 previdenciários com êxito — todas "2021 a 2025". O período **aparece**. O "+15 anos" não existe mais.
+- **Facebook e LinkedIn têm URL** e são renderizados. **Dois WhatsApps.**
+- **Sem slogan** ("Cuidamos de Causas…"): o copy novo não o traz. Não reintroduza.
+- **7 áreas** com lista curta de itens cada; na home, 4 cards + 2 "botões de acesso" (Extrajudiciais, Diligências). Assessoria Jurídica só na página Serviços.
+- **Depoimentos: os 9 originais**, sem reescrever (o documento pede explicitamente). Título e subtítulo da seção são os novos.
+- **Formulário de contato: PENDÊNCIA** — interface completa, envio ainda não definido pelo cliente. Não integrar serviço de e-mail nem WhatsApp sem ordem. Ver `docs/PENDENCIAS.md`.
+- Bio da Paula: frase repetida no docx aparece uma vez (decisão do cliente).
+
+### Fidelidade
+
+Mesma regra de sempre: literal. O docx tem uma frase de sobretítulo por bloco ("O Escritório", "Números", "Apresentação"…) — são rótulos de seção e podem virar sobretítulo. O sobretítulo **não** pode ser texto inventado.
+
+### Fotos
+
+Fotos das 3 sócias (Paula, Angela, Kelly) ainda são as do site antigo — `fotoProvisoria: true`. Bárbara e Flávia são novas. Fotos de área da home (mãe com criança etc.) ainda são banco de imagem do site antigo.

@@ -93,7 +93,7 @@ export function Vozes() {
               variant="link"
               className="h-auto shrink-0 px-0 text-base text-gold-400"
             >
-              <Link href="/site/sobre-nos">
+              <Link href="/site-v1/sobre-nos">
                 Ver todos os depoimentos
                 <ArrowRightIcon aria-hidden />
               </Link>

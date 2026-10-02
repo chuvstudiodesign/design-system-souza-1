@@ -8,15 +8,15 @@ import { DialogoArea } from "@/components/site4/dialogo-area";
 import { areasDoDireito, type AreaDoDireito } from "@/lib/site/conteudo";
 
 /**
- * A seção de áreas da `/site4` com o detalhe em pop-up.
+ * A seção de áreas da `/site-v4` com o detalhe em pop-up.
  *
- * O índice em si é o mesmo componente de `/site2` — o layout da seção não muda.
+ * O índice em si é o mesmo componente de `/site-v2` — o layout da seção não muda.
  * O que muda é o destino do clique: as áreas listadas aqui abrem o diálogo de
  * vidro no lugar de navegar para a página de serviços.
  *
- * Com as sete cobertas, a rota não usa mais o link para `/site/servicos`. O
- * mecanismo de opt-in fica de pé mesmo assim: é ele que mantém `/site2` e
- * `/site3` no comportamento antigo, já que os três compartilham o componente.
+ * Com as sete cobertas, a rota não usa mais o link para `/site-v1/servicos`. O
+ * mecanismo de opt-in fica de pé mesmo assim: é ele que mantém `/site-v2` e
+ * `/site-v3` no comportamento antigo, já que os três compartilham o componente.
  */
 const AREAS_COM_DIALOGO = areasDoDireito.map((area) => area.slug);
 

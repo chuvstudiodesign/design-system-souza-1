@@ -59,7 +59,7 @@ export function Hero() {
               size="lg"
               className="h-13 border-navy-foreground/25 bg-transparent px-6 text-base text-navy-foreground hover:bg-navy-foreground/10 hover:text-navy-foreground"
             >
-              <Link href="/site/servicos">
+              <Link href="/site-v1/servicos">
                 Ver áreas de atuação
                 <ArrowRightIcon aria-hidden />
               </Link>

@@ -650,3 +650,36 @@
     }
   }
 }
+
+/*
+ * Escala tipográfica 90% — variação 5 (/site5), pedido do usuário em
+ * 24/09/2026: todo o texto e os botões 10% menores, exceto o menu superior.
+ * Os tamanhos arbitrários do site 5 (`text-[clamp(...)]`) já foram
+ * multiplicados por 0,9 no código; esta classe faz o mesmo com a escala
+ * padrão do Tailwind (text-xs … text-6xl), usada por botões, rótulos e
+ * formulário. `.tipo-100` devolve os valores originais (header).
+ */
+.tipo-90 {
+  --text-xs: 0.675rem;
+  --text-sm: 0.7875rem;
+  --text-base: 0.9rem;
+  --text-lg: 1.0125rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.35rem;
+  --text-3xl: 1.6875rem;
+  --text-4xl: 2.025rem;
+  --text-5xl: 2.7rem;
+  --text-6xl: 3.375rem;
+}
+.tipo-100 {
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+}

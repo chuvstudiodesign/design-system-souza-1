@@ -71,7 +71,7 @@ export function Posicionamento() {
           </blockquote>
 
           <Button asChild variant="outline" size="lg" className="mt-10 h-12 px-5">
-            <Link href="/site/sobre-nos">
+            <Link href="/site-v1/sobre-nos">
               Conhecer o escritório
               <ArrowRightIcon aria-hidden />
             </Link>

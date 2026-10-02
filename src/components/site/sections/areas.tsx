@@ -49,7 +49,7 @@ export function Areas() {
               >
               <li className="@container">
                 <Link
-                  href={`/site/servicos#${area.slug}`}
+                  href={`/site-v1/servicos#${area.slug}`}
                   className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                 >
                   {area.imagem ? (
@@ -99,7 +99,7 @@ export function Areas() {
 
         <Revelar className="mt-12 flex justify-center">
           <Button asChild size="lg" className="h-12 px-6 text-base">
-            <Link href="/site/servicos">
+            <Link href="/site-v1/servicos">
               Ver todos os serviços
               <ArrowRightIcon aria-hidden />
             </Link>

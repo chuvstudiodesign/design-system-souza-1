@@ -11,9 +11,9 @@ export interface ItemNav {
 }
 
 export const navegacao: ItemNav[] = [
-  { rotulo: "Início", href: "/site" },
-  { rotulo: "O escritório", href: "/site/sobre-nos" },
-  { rotulo: "Serviços", href: "/site/servicos" },
-  { rotulo: "Equipe", href: "/site/equipe" },
-  { rotulo: "Contato", href: "/site/contato" },
+  { rotulo: "Início", href: "/site-v1" },
+  { rotulo: "O escritório", href: "/site-v1/sobre-nos" },
+  { rotulo: "Serviços", href: "/site-v1/servicos" },
+  { rotulo: "Equipe", href: "/site-v1/equipe" },
+  { rotulo: "Contato", href: "/site-v1/contato" },
 ];

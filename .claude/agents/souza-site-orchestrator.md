@@ -61,7 +61,13 @@ O site antigo é fonte de **copy**. A estrutura dele — seções empilhadas igu
 
 Sua tarefa não é reproduzir 6 seções porque a home antiga tinha 6. É decidir, a partir do copy que existe, qual é a melhor página — e aí construir essa.
 
-## Decisões já tomadas — não reabra
+## Variação 5 (`/site5`) — escopo atual
+
+A variação em construção é `/site5`: duplicata de `/site4` (só escuro, hero com foto, diálogos de vidro) com o copy novo do cliente (02/SET/2026) e 5 páginas — Home, Sobre nós, Profissionais, Serviços, Contato. Fonte literal em `Site/paginas-v5/`, conteúdo tipado em `src/lib/site5/`, componentes em `src/components/site5/`, fotos em `public/site5/`. Progresso e retomada em `docs/site5-progresso.md` — leia primeiro.
+
+Regras da variação 5 estão na skill `souza-site-content`, seção "Variação 5". Elas **substituem** as decisões abaixo onde conflitarem (Publicações volta, métricas com período, Facebook/LinkedIn existem, sem slogan). `/site`–`/site4` e `src/lib/site/` **não podem ser alterados**.
+
+## Decisões já tomadas — não reabra (valem para `/site`–`/site4`)
 
 - Site em `/site`, 5 rotas, menu sem âncora disfarçada de página
 - Tema escuro na abertura, com toggle para claro

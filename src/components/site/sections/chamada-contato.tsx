@@ -47,7 +47,7 @@ export function ChamadaContato() {
             size="lg"
             className="h-13 px-6 text-base"
           >
-            <Link href="/site/contato">
+            <Link href="/site-v1/contato">
               Ver formas de contato
               <ArrowRightIcon aria-hidden />
             </Link>

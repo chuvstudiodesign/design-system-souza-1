@@ -35,7 +35,7 @@ import { cn } from "@/lib/utils";
 
 /** Marca o item ativo sem acender "Início" em toda rota filha. */
 function estaAtivo(href: string, pathname: string) {
-  return href === "/site" ? pathname === "/site" : pathname.startsWith(href);
+  return href === "/site-v1" ? pathname === "/site-v1" : pathname.startsWith(href);
 }
 
 export function HeaderMarca() {
@@ -62,7 +62,7 @@ export function HeaderMarca() {
     >
       <div className="mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-6 md:px-10">
         <Link
-          href="/site3"
+          href="/site-v3"
           className="flex shrink-0 items-center rounded-md focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
           <AssinaturaHorizontal variant="vazado-dourado" />

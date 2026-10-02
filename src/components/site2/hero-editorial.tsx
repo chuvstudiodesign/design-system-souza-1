@@ -76,7 +76,7 @@ export function HeroEditorial() {
                 size="lg"
                 className="h-12 px-4 text-base"
               >
-                <Link href="/site/servicos">
+                <Link href="/site-v1/servicos">
                   Áreas de atuação
                   <ArrowRightIcon aria-hidden />
                 </Link>

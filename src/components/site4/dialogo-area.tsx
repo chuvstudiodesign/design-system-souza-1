@@ -21,7 +21,7 @@ import { contarServicos, type AreaDoDireito, type Servico } from "@/lib/site/con
 /**
  * Detalhe de uma área do direito em pop-up de liquid glass.
  *
- * Substitui, na `/site4`, a navegação para a página de serviços: a lista de
+ * Substitui, na `/site-v4`, a navegação para a página de serviços: a lista de
  * áreas continua sendo o índice, e o conteúdo abre por cima dela sem tirar o
  * visitante do lugar.
  *
@@ -41,7 +41,7 @@ import { contarServicos, type AreaDoDireito, type Servico } from "@/lib/site/con
  *   continuar legível por trás, mas com a estrutura e o raio do design system.
  *   Um único nível de cada: nada de vidro dentro de vidro.
  *
- * O portal monta na raiz do documento, fora da subárvore `.dark` que a `/site4`
+ * O portal monta na raiz do documento, fora da subárvore `.dark` que a `/site-v4`
  * declara no layout — daí a classe `dark` repetida no overlay e no conteúdo.
  */
 
