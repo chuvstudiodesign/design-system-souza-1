@@ -13,8 +13,8 @@ import { Cabecalho } from "./cabecalho";
 import { escala } from "./escala";
 
 const { endereco } = contato;
-// Mesma foto do "Entre em contato" da home (pedido de 29/09/2026).
-const foto = fotosEspaco.fachadaContato;
+// Mesma foto do "Entre em contato" da home (IMG_4032), a pedido do cliente (02/OUT/2026).
+const foto = fotosEspaco.fachadaHdr4032;
 
 /**
  * III — Endereço, em navy. O endereço centrado como num envelope e, abaixo,

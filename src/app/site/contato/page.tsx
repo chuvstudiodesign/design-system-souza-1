@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     description: contatoPagina.atendimento.paragrafo,
     images: [
       {
-        url: fotosEspaco.fachadaContato.src,
-        width: fotosEspaco.fachadaContato.width,
-        height: fotosEspaco.fachadaContato.height,
-        alt: fotosEspaco.fachadaContato.alt,
+        url: fotosEspaco.fachadaHdr4032.src,
+        width: fotosEspaco.fachadaHdr4032.width,
+        height: fotosEspaco.fachadaHdr4032.height,
+        alt: fotosEspaco.fachadaHdr4032.alt,
       },
     ],
   },
