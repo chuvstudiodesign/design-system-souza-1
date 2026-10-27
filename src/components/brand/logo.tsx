@@ -26,6 +26,12 @@ export const brandAssets = {
     azul: "/brand/logos/svg/logotipo-horizontal-azul.svg",
     dourado: "/brand/logos/svg/logotipo-horizontal-dourado.svg",
   },
+  /* Assinatura horizontal preenchida — mesma geometria da horizontal, com o
+     símbolo preenchido oficial no lugar do vazado (27/OUT/2026). */
+  horizontalPreenchida: {
+    azul: "/brand/logos/svg/logotipo-horizontal-preenchido-azul.svg",
+    dourado: "/brand/logos/svg/logotipo-horizontal-preenchido-dourado.svg",
+  },
   symbol: {
     azul: "/brand/logos/svg/simbolo-logotipo-preenchido-azul.svg",
     dourado: "/brand/logos/svg/simbolo-logotipo-preenchido-dourado.svg",

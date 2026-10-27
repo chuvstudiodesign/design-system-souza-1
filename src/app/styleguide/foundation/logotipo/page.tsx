@@ -370,6 +370,56 @@ export default function LogotipoPage() {
 
       <Separator />
 
+      {/* ASSINATURA HORIZONTAL PREENCHIDA */}
+      <Section
+        id="assinatura-horizontal-preenchida"
+        title="Assinatura horizontal preenchida"
+        description="A mesma composição horizontal, com o símbolo preenchido no lugar do vazado. Mesma construção da versão acima — só muda o símbolo. Pesa mais na faixa e se lê melhor em tamanhos pequenos, onde o contorno fino do símbolo vazado perde definição."
+      >
+        <div className="grid gap-5 md:grid-cols-3">
+          <AssetCard
+            titulo="Horizontal preenchida azul"
+            descricao="Sobre o degradê dourado."
+            fundo="dourado"
+            svg={brandAssets.horizontalPreenchida.azul}
+            png={pngDe(brandAssets.horizontalPreenchida.azul)}
+          >
+            <AssinaturaHorizontal
+              variant="azul"
+              textoClassName="text-brand-900"
+            />
+          </AssetCard>
+
+          <AssetCard
+            titulo="Horizontal preenchida dourada"
+            descricao="Sobre o azul institucional."
+            fundo="azul"
+            svg={brandAssets.horizontalPreenchida.dourado}
+            png={pngDe(brandAssets.horizontalPreenchida.dourado)}
+          >
+            <AssinaturaHorizontal
+              variant="dourado"
+              textoClassName="text-gold-gradient"
+            />
+          </AssetCard>
+
+          <AssetCard
+            titulo="Horizontal preenchida azul"
+            descricao="Sobre branco."
+            fundo="branco"
+            svg={brandAssets.horizontalPreenchida.azul}
+            png={pngDe(brandAssets.horizontalPreenchida.azul)}
+          >
+            <AssinaturaHorizontal
+              variant="azul"
+              textoClassName="text-brand-900"
+            />
+          </AssetCard>
+        </div>
+      </Section>
+
+      <Separator />
+
       {/* SÍMBOLO PREENCHIDO */}
       <Section
         id="simbolo"
