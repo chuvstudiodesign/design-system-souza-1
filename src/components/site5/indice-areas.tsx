@@ -25,7 +25,7 @@ const ESTAMPA = { w: 4085, h: 3154 };
  *
  * As 4 áreas principais são linhas grandes; cada uma abre o diálogo com a
  * descrição e os itens da área. A fotografia só aparece no painel lateral
- * (≥ lg), decorativa, com 3 fotos por área trocadas pelas setas sob ela —
+ * (≥ lg), decorativa, com as fotos de cada área trocadas pelas setas sob ela —
  * nenhuma informação existe apenas lá, e
  * o resumo e a seta de cada linha ficam sempre visíveis, sem depender de hover.
  *
@@ -169,7 +169,7 @@ export function IndiceAreas({
           </Revelar>
 
           {/* Painel de imagem — some abaixo de lg. As fotos são decorativas
-              (alt vazio); as setas trocam entre as 3 fotos da área exibida. */}
+              (alt vazio); as setas trocam entre as fotos da área exibida. */}
           <div className="hidden lg:col-span-3 lg:col-start-10 lg:block">
             <div className="sticky top-28">
               <div

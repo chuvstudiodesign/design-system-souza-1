@@ -118,7 +118,7 @@ export interface AreaDeAtuacao {
   resumoHome?: string;
   acesso?: boolean;
   /**
-   * Fotos do painel da home — só as 4 áreas principais. São 3 por área e o
+   * Fotos do painel da home — só as 4 áreas principais. Com mais de uma, o
    * visitante troca entre elas pelas setas sob a foto. `posicao` é o
    * `object-position` do recorte 3:4 (útil nas fotos horizontais).
    */
@@ -154,9 +154,7 @@ export const areas: AreaDeAtuacao[] = [
     resumoHome:
       "Planejamento e concessão de benefícios previdenciários urbanos e rurais, além de outras demandas previdenciárias.",
     imagens: [
-      { src: "/site5/areas/previdenciario-1.webp", width: 1800, height: 2700, alt: "Mãe sorrindo com o filho no colo em um jardim" },
-      { src: "/site5/areas/previdenciario-2.webp", width: 1800, height: 2700, alt: "Filho abraçando a mãe em casa" },
-      { src: "/site5/areas/previdenciario-3.webp", width: 1800, height: 2520, alt: "Mãe e filho abraçados na rua" },
+      { src: "/site5/areas/previdenciario-4.webp", width: 1800, height: 2700, alt: "Casal de idosos abraçado ao ar livre, sorrindo" },
     ],
   },
   {
@@ -174,8 +172,6 @@ export const areas: AreaDeAtuacao[] = [
       "Atuação em demandas relacionadas às relações de trabalho e demais direitos e obrigações de empregados e empregadores.",
     imagens: [
       { src: "/site5/areas/trabalhista-1.webp", width: 1800, height: 2700, alt: "Mulher sentada lendo uma folha de papel" },
-      { src: "/site5/areas/trabalhista-2.webp", width: 1800, height: 2710, alt: "Mulher de óculos lendo um papel com atenção" },
-      { src: "/site5/areas/trabalhista-3.webp", width: 1800, height: 2700, alt: "Mulher de óculos lendo documentos à mesa" },
     ],
   },
   {
@@ -191,9 +187,7 @@ export const areas: AreaDeAtuacao[] = [
     resumoHome:
       "Demandas sobre direitos e obrigações tributárias, envolvendo pessoas físicas, empresas e atividades econômicas.",
     imagens: [
-      { src: "/site5/areas/tributario-1.webp", width: 1800, height: 1200, alt: "Mãos fazendo contas em uma calculadora ao lado do teclado", posicao: "78% 60%" },
       { src: "/site5/areas/tributario-2.webp", width: 1800, height: 1201, alt: "Mãos com calculadora, caderno e notebook sobre a mesa", posicao: "62% 60%" },
-      { src: "/site5/areas/tributario-3.webp", width: 1800, height: 1200, alt: "Mão preenchendo um formulário ao lado de calculadora e notebook", posicao: "62% 50%" },
     ],
   },
   {
@@ -215,9 +209,7 @@ export const areas: AreaDeAtuacao[] = [
     resumoHome:
       "Atuação em contratos, herança, inventário, questões familiares, imobiliárias e outras demandas do Direito Civil.",
     imagens: [
-      { src: "/site5/areas/civil-1.webp", width: 1800, height: 2699, alt: "Pai, mãe e filhos sentados no chão sorrindo" },
       { src: "/site5/areas/civil-2.webp", width: 1800, height: 2700, alt: "Pai e mãe deitados no chão brincando com a filha" },
-      { src: "/site5/areas/civil-3.webp", width: 1800, height: 2700, alt: "Família reunida ao ar livre ao pôr do sol" },
     ],
   },
   {

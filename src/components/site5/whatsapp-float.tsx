@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 
 import { WhatsAppGlyph } from "@/components/site5/glifos";
+import { useCaminhoSite } from "@/components/site5/use-caminho-site";
 import { whatsappHref } from "@/lib/site5/contato";
 import { home } from "@/lib/site5/conteudo";
 
@@ -31,7 +31,7 @@ import { home } from "@/lib/site5/conteudo";
  */
 export function WhatsAppFloat() {
   // O layout não remonta entre rotas: a `key` reinicia o estado a cada página.
-  const pathname = usePathname();
+  const pathname = useCaminhoSite();
   return <BotaoFlutuante key={pathname} naHome={pathname === "/site"} />;
 }
 

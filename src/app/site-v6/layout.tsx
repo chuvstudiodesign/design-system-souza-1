@@ -24,7 +24,7 @@ export const metadata: Metadata = {
  * header.
  *
  * A única ressalva são os portais — `Sheet`, `Dialog`, `Toaster` montam na raiz
- * do documento e ficam fora desta árvore. Quem usar um portal dentro de `/site-v4`
+ * do documento e ficam fora desta árvore. Quem usar um portal dentro de `/site-v6`
  * precisa repetir `dark` no conteúdo, como faz o `HeaderMarca`.
  */
 export default function Site4Layout({

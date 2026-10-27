@@ -2,12 +2,12 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { MenuIcon } from "lucide-react";
 
 import { Symbol } from "@/components/brand/logo";
 import { WhatsAppGlyph } from "@/components/site5/glifos";
 import { navegacao } from "@/components/site5/navegacao";
+import { useCaminhoSite } from "@/components/site5/use-caminho-site";
 import { ProgressoScroll } from "@/components/site/motion/progresso-scroll";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,7 +40,7 @@ function estaAtivo(href: string, pathname: string) {
 }
 
 export function HeaderMarca() {
-  const pathname = usePathname();
+  const pathname = useCaminhoSite();
   const [aberto, setAberto] = React.useState(false);
 
   return (

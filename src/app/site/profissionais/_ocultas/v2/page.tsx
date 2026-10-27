@@ -4,7 +4,6 @@ import { Abertura } from "@/components/site5/profissionais-v3/abertura";
 import { FechoProfissionais } from "@/components/site5/profissionais-v3/fecho-profissionais";
 import { Fichas } from "@/components/site5/profissionais-v3/fichas";
 import { IntroducaoNavy } from "@/components/site5/profissionais-v3/introducao-navy";
-import { SeletorVersao } from "@/components/site5/seletor-versao";
 import { fotosEspaco, profissionaisIntro } from "@/lib/site5/conteudo";
 
 /**
@@ -40,7 +39,6 @@ export default function Page() {
       <IntroducaoNavy />
       <Fichas />
       <FechoProfissionais />
-      <SeletorVersao base="/site/profissionais" atual={2} total={2} />
     </>
   );
 }

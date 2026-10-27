@@ -3,12 +3,10 @@ import type { Metadata } from "next";
 import { DepoimentosV2 } from "@/components/site5/depoimentos/v2";
 import { FaixaNumeros } from "@/components/site5/faixa-numeros";
 import { FechoV1 } from "@/components/site5/fecho/v1";
-import { FechoV2 } from "@/components/site5/fecho/v2";
 import { HeroFoto } from "@/components/site5/hero-foto";
 import { IndiceAreasDialogo } from "@/components/site5/indice-areas-dialogo";
 import { Manifesto } from "@/components/site5/manifesto";
 import { Publicacoes } from "@/components/site5/publicacoes";
-import { VariacoesSecao } from "@/components/site5/variacoes-secao";
 import { contato } from "@/lib/site5/contato";
 import { fotosEspaco, home } from "@/lib/site5/conteudo";
 
@@ -51,12 +49,9 @@ export default function Page() {
       <IndiceAreasDialogo />
       <DepoimentosV2 />
       <Publicacoes />
-      <VariacoesSecao
-        rotulo="Contato"
-        // Ordem invertida a pedido do cliente (29/09/2026): a antiga V2 abre
-        // primeiro e aparece como "1"; a antiga V1 virou "2".
-        versoes={[<FechoV2 key={2} />, <FechoV1 key={1} />]}
-      />
+      {/* Escolhida em 27/OUT/2026: era a "Versão 2" do alternador. A outra
+          (FechoV2) continua em components/site5/fecho/v2.tsx. */}
+      <FechoV1 />
     </>
   );
 }

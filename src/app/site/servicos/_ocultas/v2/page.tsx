@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { SeletorVersao } from "@/components/site5/seletor-versao";
 import { AberturaV2 } from "@/components/site5/servicos-v2/abertura";
 import { CatalogoV2 } from "@/components/site5/servicos-v2/catalogo";
 import { ContatoDourado } from "@/components/site5/servicos-v2/contato-dourado";
@@ -37,7 +36,6 @@ export default function Page() {
       <AberturaV2 />
       <CatalogoV2 />
       <ContatoDourado />
-      <SeletorVersao base="/site/servicos" atual={2} />
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { useCaminhoSite } from "@/components/site5/use-caminho-site";
 
 /**
  * Esconde o mapa do rodapé na página Contato, que já traz o mesmo mapa no
@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
  * servidor; aqui só vive a decisão de mostrar ou não.
  */
 export function MapaRodape({ children }: { children: React.ReactNode }) {
-  const caminho = usePathname();
+  const caminho = useCaminhoSite();
   // Todas as versões da página de contato (V1, /v2, /v3) já mostram o mapa.
   if (caminho?.startsWith("/site/contato")) return null;
   return children;

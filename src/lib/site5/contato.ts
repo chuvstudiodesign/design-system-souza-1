@@ -2,7 +2,7 @@
  * Dados de contato canônicos da variação 5.
  *
  * Fonte: `Site/paginas-v5/05-contato.md` — texto do cliente de 02/SET/2026.
- * Diferente de `@/lib/site/contato`, que atende `/site-v1`–`/site-v4` com o copy
+ * Diferente de `@/lib/site/contato`, que atende `/site-v1`–`/site-v3` e `/site-v6` com o copy
  * antigo: aqui entram o segundo WhatsApp e as URLs de Facebook e LinkedIn,
  * que o cliente passou a fornecer.
  *

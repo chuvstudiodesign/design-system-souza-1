@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
       { source: "/contato", destination: "/site/contato", permanent: true },
       // 02/OUT/2026: a variação 5 virou o site principal em /site; as
       // anteriores foram para /site-v1 … /site-v4. Links antigos de /site5 e
-      // /site2–4 continuam funcionando (temporários: ainda é fase de revisão).
+      // /site2–3 continuam funcionando (temporários: ainda é fase de revisão).
       { source: "/site5", destination: "/site", permanent: false },
       // Só as páginas: as fotos continuam servidas de /public/site5/…
       {
@@ -29,8 +29,18 @@ const nextConfig: NextConfig = {
       },
       { source: "/site2", destination: "/site-v2", permanent: false },
       { source: "/site3", destination: "/site-v3", permanent: false },
-      { source: "/site4", destination: "/site-v4", permanent: false },
+      // 27/OUT/2026: /site4 passou a ser espelho de /site (src/app/site4) e a
+      // antiga variação 4 foi para /site-v6, também acessível por /site6.
+      { source: "/site6", destination: "/site-v6", permanent: false },
+      { source: "/site-v4", destination: "/site-v6", permanent: false },
       { source: "/site/equipe", destination: "/site/profissionais", permanent: false },
+      // 27/OUT/2026: o cliente escolheu uma versão de cada página interna; as
+      // outras foram para `_ocultas/`. Links antigos de /v2 e /v3 caem na base.
+      {
+        source: "/:site(site|site4)/:pagina(sobre-nos|profissionais|servicos)/:versao(v2|v3)",
+        destination: "/:site/:pagina",
+        permanent: false,
+      },
     ];
   },
 };

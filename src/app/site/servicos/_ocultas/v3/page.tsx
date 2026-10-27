@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { SeletorVersao } from "@/components/site5/seletor-versao";
 import { AberturaV3 } from "@/components/site5/servicos-v3/abertura";
 import { Capitulos } from "@/components/site5/servicos-v3/capitulos";
 import { FechoServicos } from "@/components/site5/servicos-v3/fecho-servicos";
@@ -37,7 +36,6 @@ export default function Page() {
       <AberturaV3 />
       <Capitulos />
       <FechoServicos />
-      <SeletorVersao base="/site/servicos" atual={3} />
     </>
   );
 }

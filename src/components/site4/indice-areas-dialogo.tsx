@@ -8,7 +8,7 @@ import { DialogoArea } from "@/components/site4/dialogo-area";
 import { areasDoDireito, type AreaDoDireito } from "@/lib/site/conteudo";
 
 /**
- * A seção de áreas da `/site-v4` com o detalhe em pop-up.
+ * A seção de áreas da `/site-v6` com o detalhe em pop-up.
  *
  * O índice em si é o mesmo componente de `/site-v2` — o layout da seção não muda.
  * O que muda é o destino do clique: as áreas listadas aqui abrem o diálogo de
