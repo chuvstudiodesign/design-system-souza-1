@@ -14,7 +14,7 @@ import { escala } from "./escala";
 
 const { endereco } = contato;
 // Mesma foto do "Entre em contato" da home (IMG_4032), a pedido do cliente (02/OUT/2026).
-const foto = fotosEspaco.fachadaHdr4032;
+const foto = fotosEspaco.fachadaNova;
 
 /**
  * III — Endereço, em navy. O endereço centrado como num envelope e, abaixo,

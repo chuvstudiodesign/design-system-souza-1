@@ -556,5 +556,10 @@ export const fotosEspaco = {
   fachadaHdr4032: { src: "/site5/espaco/fachada-hdr-4032.webp", width: 4743, height: 3162, alt: "Fachada do escritório Souza & Souza com palmeiras, vista da rua" },
   salaHdr3947: { src: "/site5/espaco/sala-hdr-3947.webp", width: 4743, height: 3162, alt: "Sala de atendimento com mesa em madeira, cadeiras e armários iluminados" },
   recepcaoHdr3987: { src: "/site5/espaco/recepcao-hdr-3987.webp", width: 4743, height: 3162, alt: "Recepção com balcão de mármore, poltronas de espera e o painel da marca Souza & Souza" },
+  // Fotos novas do espaço, enviadas pelo cliente em 27/OUT/2026.
+  fachadaNova: { src: "/site5/espaco/fachada-nova.webp", width: 1536, height: 1024, alt: "Fachada do escritório Souza & Souza com palmeiras, vista da rua" },
+  recepcaoNova: { src: "/site5/espaco/recepcao-nova.webp", width: 4800, height: 3600, alt: "Recepção com balcão de mármore, poltronas de espera e o painel da marca Souza & Souza" },
+  sala1Nova: { src: "/site5/espaco/sala-1-nova.webp", width: 4800, height: 3600, alt: "Sala de atendimento com mesa em madeira clara, cadeiras e armários iluminados" },
+  sala3Nova: { src: "/site5/espaco/sala-3-nova.webp", width: 4800, height: 3600, alt: "Sala de atendimento com mesa em madeira, painel ripado e janela" },
   equipeGrupo: { src: "/site5/equipe/grupo.webp", width: 2036, height: 860, alt: "Advogadas sócias da Souza & Souza reunidas na recepção" },
 } as const;

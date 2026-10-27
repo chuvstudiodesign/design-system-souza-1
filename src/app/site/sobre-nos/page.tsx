@@ -12,6 +12,8 @@ import { fotosEspaco, sobre } from "@/lib/site5/conteudo";
 /**
  * Sobre nós da variação 5 — V2 "Revista" com a capa IMG_4002-HDR, escolhida
  * pelo cliente em 27/OUT/2026 (era a "Versão 2" do seletor).
+ * Ainda em 27/OUT/2026 a capa passou a ser a foto nova da recepção
+ * (`fotosEspaco.recepcaoNova`), mantendo o enquadramento e o deslocamento.
  *
  * A versão com a capa do balcão da marca e as antigas V1 e V3 ficam em
  * `_ocultas/` (pasta privada: o Next não gera rota para ela).
@@ -27,10 +29,10 @@ export const metadata: Metadata = {
     description: sobre.hero.subtitulo,
     images: [
       {
-        url: fotosEspaco.recepcaoHdr4002.src,
-        width: fotosEspaco.recepcaoHdr4002.width,
-        height: fotosEspaco.recepcaoHdr4002.height,
-        alt: fotosEspaco.recepcaoHdr4002.alt,
+        url: fotosEspaco.recepcaoNova.src,
+        width: fotosEspaco.recepcaoNova.width,
+        height: fotosEspaco.recepcaoNova.height,
+        alt: fotosEspaco.recepcaoNova.alt,
       },
     ],
   },
@@ -40,7 +42,7 @@ export default function Page() {
   return (
     <>
       <Capa
-        foto={fotosEspaco.recepcaoHdr4002}
+        foto={fotosEspaco.recepcaoNova}
         enquadramento="object-[65%_0%] md:object-[55%_0%]"
         // Desce a foto para o topo começar abaixo do header e não cortar o
         // painel da marca (pedido de 29/09/2026). Reverter: remover a prop.

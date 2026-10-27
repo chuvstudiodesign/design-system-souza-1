@@ -15,9 +15,9 @@ const corpo =
  * proporção em todas as larguras: é uma unidade visual, não empilha.
  */
 export function Experiencia() {
-  // IMG_3947 e IMG_3987 do site antigo, a pedido do cliente (02/OUT/2026).
-  const esquerda = fotosEspaco.salaHdr3947;
-  const direita = fotosEspaco.recepcaoHdr3987;
+  // Sala 1 e Sala 3 do ensaio novo, a pedido do cliente (27/OUT/2026).
+  const esquerda = fotosEspaco.sala1Nova;
+  const direita = fotosEspaco.sala3Nova;
   const [primeiro, segundo] = sobre.experiencia.paragrafos;
 
   return (

@@ -16,7 +16,7 @@ import { fotosEspaco, home } from "@/lib/site5/conteudo";
 
 /** A foto do fecho: fachada DSC04915 (Agência K+), 3200×2137 ≈ 3:2. */
 // IMG_4032 do site antigo, a pedido do cliente (02/OUT/2026).
-export const fotoFecho = fotosEspaco.fachadaHdr4032;
+export const fotoFecho = fotosEspaco.fachadaNova;
 
 /** Corpo institucional — nunca abaixo de 17px. */
 export const corpoFecho =
