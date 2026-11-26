@@ -7,7 +7,7 @@ import { AjusteEstampa } from "@/components/site5/ajuste-estampa";
 import { Container, Section } from "@/components/site/layout/section";
 import { Revelar } from "@/components/site/motion/revelar";
 import { Button } from "@/components/ui/button";
-import { home } from "@/lib/site5/conteudo";
+import { fotosEspaco, home } from "@/lib/site5/conteudo";
 
 /** Dimensões nativas da estampa — iguais nos dois arquivos. */
 const ESTAMPA = { w: 4085, h: 3154 };
@@ -15,8 +15,9 @@ const ESTAMPA = { w: 4085, h: 3154 };
 /**
  * Posicionamento do escritório, em chave editorial.
  *
- * O número de seção ancora a coluna vazia à esquerda e o texto começa deslocado
- * — a assimetria é o recurso de composição, no lugar da imagem que a home usa.
+ * O número de seção ancora a coluna vazia à esquerda, o texto ocupa o centro e
+ * a foto da recepção fecha a composição à direita (pedido do cliente na
+ * reunião de 27/10/2026). No celular a foto vem depois do texto.
  *
  * Superfície dourada: é o único bloco cheio de marca da página, e o contraste
  * inverte em relação às vizinhas — o dourado que era acento vira fundo, e o
@@ -77,7 +78,7 @@ export function Manifesto() {
             </p>
           </div>
 
-          <Revelar className="lg:col-span-8 lg:col-start-5">
+          <Revelar className="min-w-0 lg:col-span-5 lg:col-start-4">
             <h2 className="max-w-[22ch] text-[clamp(1.575rem,1.08rem+1.98vw,2.7rem)] leading-[1.1] font-medium tracking-tight text-balance break-words">
               {home.escritorio.titulo}
             </h2>
@@ -102,6 +103,21 @@ export function Manifesto() {
                 <ArrowRightIcon aria-hidden />
               </Link>
             </Button>
+          </Revelar>
+
+          <Revelar
+            variante="zoom"
+            atraso={120}
+            className="relative aspect-[4/5] w-full min-w-0 overflow-hidden rounded-3xl shadow-2xl ring-1 ring-brand-950/15 max-lg:mx-auto max-lg:max-w-md lg:col-span-4 lg:col-start-9 lg:self-center"
+          >
+            <Image
+              quality={95}
+              src={fotosEspaco.recepcaoNova.src}
+              alt={fotosEspaco.recepcaoNova.alt}
+              fill
+              sizes="(max-width: 1023px) min(28rem, calc(100vw - 3rem)), 30vw"
+              className="object-cover object-[58%_45%]"
+            />
           </Revelar>
         </div>
       </Container>

@@ -50,9 +50,11 @@ export function HeaderMarca() {
           href="/site"
           className="flex min-h-11 min-w-0 items-center gap-3 rounded-md focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
-          {/* Ornamento: o nome ao lado já identifica a marca. */}
+          {/* Ornamento: o nome ao lado já identifica a marca. Símbolo
+              preenchido a pedido do cliente (27/10/2026): numa página cheia de
+              conteúdo o vazado perde atenção; o preenchido se destaca. */}
           <span aria-hidden className="inline-flex shrink-0">
-            <Symbol variant="vazado-dourado" size={40} />
+            <Symbol variant="dourado" size={40} />
           </span>
 
           {/* Ajuste óptico: as capitulares da Trajan assentam alto em relação

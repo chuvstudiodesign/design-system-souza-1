@@ -43,7 +43,10 @@ export default function Page() {
     <>
       <Capa
         foto={fotosEspaco.recepcaoNova}
-        enquadramento="object-[65%_0%] md:object-[55%_0%]"
+        // xl+: em telas largas a foto (4:3) é cortada embaixo; ancorada no topo
+        // mostrava o teto e escondia o painel da marca atrás do título
+        // (bug apontado na reunião de 27/10/2026).
+        enquadramento="object-[65%_0%] md:object-[55%_0%] xl:object-[55%_38%]"
         // Desce a foto para o topo começar abaixo do header e não cortar o
         // painel da marca (pedido de 29/09/2026). Reverter: remover a prop.
         deslocamento="top-10"

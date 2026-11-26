@@ -1,8 +1,12 @@
-import Image from "next/image";
 import { ArrowDownIcon } from "lucide-react";
 
 import { Container, Sobretitulo } from "@/components/site/layout/section";
 import { WhatsAppGlyph } from "@/components/site5/glifos";
+import {
+  FotoHero,
+  SeletorFotoHero,
+  TrocaFotoHero,
+} from "@/components/site5/troca-foto-hero";
 import { Button } from "@/components/ui/button";
 import { whatsappHref } from "@/lib/site5/contato";
 import { home } from "@/lib/site5/conteudo";
@@ -42,17 +46,17 @@ export function HeroFoto() {
   const [paragrafo1, paragrafo2] = home.hero.paragrafos;
 
   return (
+    <TrocaFotoHero>
     <section className="relative isolate overflow-hidden bg-background">
+      {/* Comparação de fotos pedida em 26/11/2026 — sai quando o cliente escolher. */}
+      <SeletorFotoHero className="absolute top-22 right-4 md:right-6" />
+
       {/* Desktop — foto de fundo a 50%, ancorada à esquerda. Decorativa.
           Teste de 29/09/2026: era `opacity-30`; subiu 20 pontos (5 + 15) para clarear
           o topo. O degradê abaixo continua escurecendo até o fundo. Para
           reverter, volte `opacity-50` para `opacity-30`. */}
-      <Image
-        src="/site/home/hero.webp"
-        alt=""
-        aria-hidden
-        fill
-        unoptimized
+      <FotoHero
+        versao="desktop"
         className="-z-20 hidden object-cover object-left opacity-50 lg:block"
       />
       <div
@@ -72,12 +76,8 @@ export function HeroFoto() {
           terço superior, para o azul subir bem na foto. */}
       <div className="relative mt-18 aspect-[20/13] max-h-[70svh] w-full overflow-hidden sm:aspect-[30/13] lg:hidden [@media(orientation:landscape)_and_(max-height:30rem)]:aspect-[21/9]">
         <div className="absolute inset-x-0 -top-[10%] h-[154%]">
-          <Image
-            src="/site5/home-hero-mobile.webp"
-            alt=""
-            aria-hidden
-            fill
-            unoptimized
+          <FotoHero
+            versao="mobile"
             loading="eager"
             fetchPriority="high"
             className="object-cover object-[67%_center] sm:object-[78%_center]"
@@ -151,5 +151,6 @@ export function HeroFoto() {
         </div>
       </Container>
     </section>
+    </TrocaFotoHero>
   );
 }

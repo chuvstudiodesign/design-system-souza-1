@@ -367,16 +367,18 @@ export interface Profissional {
 export const profissionais: Profissional[] = [
   {
     slug: "paula-faids",
-    nome: "Paula Faids Carneiro Souza Sales",
+    // "Dra." a pedido do cliente (reunião de 27/10/2026), para reforçar a autoridade.
+    nome: "Dra. Paula Faids Carneiro Souza Sales",
     papel: "socia",
     desde: "2006",
     foto: {
-      src: "/site5/equipe/paula-faids.webp",
+      src: "/site5/equipe/paula-faids-estudio.webp",
       alt: "Paula Faids Carneiro Souza Sales, sócia e advogada",
-      width: 1707,
+      width: 1922,
       height: 2560,
     },
-    fotoProvisoria: true,
+    // Ensaio em estúdio entregue em 26/11/2026 (a foto anterior segue em
+    // /site5/equipe/paula-faids.webp).
     bio: [
       "Advogada desde 2006, inscrita na OAB – Seccional Goiás, com atuação em Direito Previdenciário e Civil. É especialista em Direito Previdenciário e Direito Processual Civil e possui trajetória de atuação institucional na OAB-GO, tendo presidido a Comissão de Direito Previdenciário da Subseção de Catalão/GO nos triênios 2013–2015 e 2019–2021, Conselheira Deliberativa da OABPrev GO/TO Gestão 2023-2026 e Gestão 2026-2029 e Vice-Presidente da Comissão de Orçamento e Contas da OAB/GO Triênio 2025-2027.",
       "Desde 2007, integra a Souza & Souza Advocacia como sócia e advogada, contribuindo com sua experiência para a atuação jurídica do Escritório.",
@@ -384,16 +386,17 @@ export const profissionais: Profissional[] = [
   },
   {
     slug: "angela-borba",
-    nome: "Angela Carneiro Souza Borba",
+    nome: "Dra. Angela Carneiro Souza Borba",
     papel: "socia",
     desde: "2013",
     foto: {
-      src: "/site5/equipe/angela-borba.webp",
+      src: "/site5/equipe/angela-borba-estudio.webp",
       alt: "Angela Carneiro Souza Borba, sócia e advogada",
-      width: 1705,
+      width: 1922,
       height: 2560,
     },
-    fotoProvisoria: true,
+    // Ensaio em estúdio entregue em 26/11/2026 (a foto anterior segue em
+    // /site5/equipe/angela-borba.webp).
     bio: [
       "Advogada desde 2013, inscrita na OAB – Seccional Goiás, com atuação em Direito Previdenciário, especialmente em demandas relacionadas a benefícios rurais, como aposentadorias, pensão por morte e benefícios por incapacidade.",
       "Também atua em questões relacionadas ao Benefício de Prestação Continuada (BPC/LOAS). Desde 2014, integra a Souza & Souza Advocacia como sócia e advogada contribuindo com sua experiência para a atuação jurídica do Escritório.",
@@ -401,16 +404,17 @@ export const profissionais: Profissional[] = [
   },
   {
     slug: "kelly-marques",
-    nome: "Kelly Marques de Souza",
+    nome: "Dra. Kelly Marques de Souza",
     papel: "socia",
     desde: "2001",
     foto: {
-      src: "/site5/equipe/kelly-marques.webp",
+      src: "/site5/equipe/kelly-marques-estudio.webp",
       alt: "Kelly Marques de Souza, sócia e advogada",
-      width: 1707,
+      width: 1922,
       height: 2560,
     },
-    fotoProvisoria: true,
+    // Ensaio em estúdio entregue em 26/11/2026 (a foto anterior segue em
+    // /site5/equipe/kelly-marques.webp).
     bio: [
       "Advogada desde 2001, inscrita na OAB – Seccional Goiás, com atuação nas áreas de Direito Trabalhista, Empresarial, Previdenciário e Civil. É especialista em Direito e Processo do Trabalho, Direito Público e Direito Médico e Hospitalar, reunindo formação especializada e experiência em diferentes áreas do Direito.",
       "Desde 2007, integra a Souza & Souza Advocacia como sócia e advogada, contribuindo com sua experiência para a atuação jurídica do Escritório.",
@@ -418,7 +422,7 @@ export const profissionais: Profissional[] = [
   },
   {
     slug: "barbara-matoso",
-    nome: "Bárbara de Carvalho Matoso",
+    nome: "Dra. Bárbara de Carvalho Matoso",
     papel: "associada",
     desde: "2015",
     foto: {
@@ -434,7 +438,7 @@ export const profissionais: Profissional[] = [
   },
   {
     slug: "flavia-almeida",
-    nome: "Flávia da Silva Almeida",
+    nome: "Dra. Flávia da Silva Almeida",
     papel: "associada",
     desde: "2021",
     foto: {
@@ -561,5 +565,7 @@ export const fotosEspaco = {
   recepcaoNova: { src: "/site5/espaco/recepcao-nova.webp", width: 4800, height: 3600, alt: "Recepção com balcão de mármore, poltronas de espera e o painel da marca Souza & Souza" },
   sala1Nova: { src: "/site5/espaco/sala-1-nova.webp", width: 4800, height: 3600, alt: "Sala de atendimento com mesa em madeira clara, cadeiras e armários iluminados" },
   sala3Nova: { src: "/site5/espaco/sala-3-nova.webp", width: 4800, height: 3600, alt: "Sala de atendimento com mesa em madeira, painel ripado e janela" },
+  // Ensaio em estúdio das três sócias (26/11/2026) — Paula, Angela e Kelly.
+  trioEstudio: { src: "/site5/equipe/trio-estudio.webp", width: 4800, height: 3603, alt: "Dra. Paula, Dra. Angela e Dra. Kelly, sócias da Souza & Souza, lado a lado" },
   equipeGrupo: { src: "/site5/equipe/grupo.webp", width: 2036, height: 860, alt: "Advogadas sócias da Souza & Souza reunidas na recepção" },
 } as const;

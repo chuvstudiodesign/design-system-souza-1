@@ -22,7 +22,8 @@ import { fotosEspaco, home, sobre } from "@/lib/site5/conteudo";
  * em tela 2x.
  */
 export function Fechamento() {
-  const foto = fotosEspaco.equipeGrupo;
+  // Foto do trio em estúdio a pedido do cliente (26/11/2026).
+  const foto = fotosEspaco.trioEstudio;
 
   return (
     <Section surface="muted" size="lg" className="overflow-clip">
@@ -71,15 +72,18 @@ export function Fechamento() {
       <Container width="wide" className="mt-16 md:mt-24">
         <Revelar
           variante="zoom"
-          className="relative mx-auto aspect-[3/2] max-w-[80rem] overflow-hidden rounded-2xl md:aspect-[21/9] md:rounded-3xl"
+          className="relative mx-auto aspect-[4800/3603] max-w-[80rem] overflow-hidden rounded-2xl md:rounded-3xl"
         >
+          {/* Proporção original da foto (4:3), sem corte, a pedido do cliente.
+              `unoptimized`: o cliente achou a foto do trio com qualidade baixa
+              na versão recomprimida pelo Next — vai o WebP original (4800px). */}
           <Image
-            quality={95}
+            unoptimized
             src={foto.src}
             alt={foto.alt}
             fill
             sizes="(max-width: 1023px) calc(100vw - 3rem), min(calc(100vw - 5rem), 80rem)"
-            className="object-cover object-[56%_40%]"
+            className="object-cover"
           />
         </Revelar>
       </Container>
