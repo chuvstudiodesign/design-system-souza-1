@@ -7,6 +7,7 @@ import { MenuIcon } from "lucide-react";
 import { Symbol } from "@/components/brand/logo";
 import { WhatsAppGlyph } from "@/components/site5/glifos";
 import { navegacao } from "@/components/site5/navegacao";
+import { BotaoTrocaFoto } from "@/components/site5/troca-foto-hero";
 import { useCaminhoSite } from "@/components/site5/use-caminho-site";
 import { ProgressoScroll } from "@/components/site/motion/progresso-scroll";
 import { Button } from "@/components/ui/button";
@@ -97,6 +98,10 @@ export function HeaderMarca() {
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2 lg:ml-2 xl:ml-4">
+          {/* Comparação das fotos do hero (26/11/2026) — só na home; sai
+              quando o cliente escolher. */}
+          {pathname === navegacao[0].href ? <BotaoTrocaFoto /> : null}
+
           <Button
             asChild
             size="lg"

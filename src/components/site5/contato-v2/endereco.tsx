@@ -88,7 +88,7 @@ export function Endereco() {
               width={foto.width}
               height={foto.height}
               sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1279px) calc(100vw - 5rem), 75rem"
-              className="block h-auto w-full"
+              className="block h-auto w-full saturate-[0.7]"
             />
           </Revelar>
 

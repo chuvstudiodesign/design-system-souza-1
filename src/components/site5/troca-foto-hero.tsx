@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { ArrowLeftRightIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -9,28 +10,50 @@ import { cn } from "@/lib/utils";
  * Troca da foto do hero da home — ferramenta de comparação para o cliente
  * (26/11/2026), não faz parte do site final. Foto 1 é o ensaio em estúdio
  * ("Capa Hero Home"), foto 2 a da recepção que estava no ar. Quando o cliente
- * escolher, volte o `HeroFoto` para um `<Image>` fixo da opção escolhida.
+ * escolher, volte o `HeroFoto` para um `<Image>` fixo da opção escolhida e
+ * tire o `BotaoTrocaFoto` do header.
  *
- * O estado mora num contexto porque a foto aparece em dois lugares do hero:
- * fundo no desktop e faixa no topo do celular.
+ * O botão mora no header e a foto no hero — árvores diferentes —, então a
+ * escolha fica num armazém de módulo lido com `useSyncExternalStore`.
  */
 export const opcoesFotoHero = [
   {
     desktop: "/site5/home-hero-estudio.webp",
     mobile: "/site5/home-hero-estudio-mobile.webp",
+    // Pedido de 26/11/2026: as três ~7% mais para cima e a foto ~5% maior
+    // (no celular, ~2%). A faixa que se abre embaixo some no degradê que leva
+    // a foto ao fundo. Desktop ancorado no topo e à direita
+    // (`object-[88%_0%]`, não 100%: em 1024px a primeira cortaria pela esquerda): em tela larga o corte vai todo para baixo; em tela
+    // estreita (iPad, notebook pequeno), para a esquerda, atrás do texto — as
+    // três ficam sempre inteiras à direita.
+    ajuste: {
+      desktop: "object-[88%_0%] origin-top-right scale-[1.05] -translate-y-[7%]",
+      mobile: "origin-top scale-[1.05] -translate-y-[2%]",
+    },
   },
-  { desktop: "/site/home/hero.webp", mobile: "/site5/home-hero-mobile.webp" },
+  {
+    desktop: "/site/home/hero.webp",
+    mobile: "/site5/home-hero-mobile.webp",
+    ajuste: { desktop: "", mobile: "" },
+  },
 ] as const;
 
-const Contexto = React.createContext<{
-  atual: number;
-  setAtual: (i: number) => void;
-}>({ atual: 0, setAtual: () => {} });
+let atual = 0;
+const ouvintes = new Set<() => void>();
 
-export function TrocaFotoHero({ children }: { children: React.ReactNode }) {
-  const [atual, setAtual] = React.useState(0);
-  return (
-    <Contexto.Provider value={{ atual, setAtual }}>{children}</Contexto.Provider>
+function alternar() {
+  atual = (atual + 1) % opcoesFotoHero.length;
+  ouvintes.forEach((ouvir) => ouvir());
+}
+
+function useFotoAtual() {
+  return React.useSyncExternalStore(
+    (ouvir) => {
+      ouvintes.add(ouvir);
+      return () => ouvintes.delete(ouvir);
+    },
+    () => atual,
+    () => 0
   );
 }
 
@@ -42,7 +65,7 @@ export function FotoHero({
 }: Omit<React.ComponentProps<typeof Image>, "src" | "alt"> & {
   versao: "desktop" | "mobile";
 }) {
-  const { atual } = React.useContext(Contexto);
+  const escolhida = useFotoAtual();
   return (
     <>
       {opcoesFotoHero.map((op, i) => (
@@ -54,43 +77,28 @@ export function FotoHero({
           fill
           unoptimized
           {...props}
-          className={cn(className, i !== atual && "!hidden")}
+          className={cn(className, op.ajuste[versao], i !== escolhida && "!hidden")}
         />
       ))}
     </>
   );
 }
 
-export function SeletorFotoHero({ className }: { className?: string }) {
-  const { atual, setAtual } = React.useContext(Contexto);
+/** Ícone de duas setas no header: alterna entre as fotos do hero. */
+export function BotaoTrocaFoto({ className }: { className?: string }) {
+  const escolhida = useFotoAtual();
   return (
-    <div
-      role="group"
-      aria-label="Foto do topo"
+    <button
+      type="button"
+      onClick={alternar}
+      aria-label={`Trocar a foto do topo (mostrando a ${escolhida + 1} de ${opcoesFotoHero.length})`}
+      title="Trocar a foto do topo"
       className={cn(
-        "z-30 flex items-center gap-1 rounded-full bg-card/90 p-1 shadow-lg ring-1 ring-border backdrop-blur-md",
+        "grid size-9 shrink-0 place-items-center rounded-full text-foreground/70 transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
         className
       )}
     >
-      <span className="px-2.5 text-xs tracking-[0.12em] text-muted-foreground uppercase">
-        Foto
-      </span>
-      {opcoesFotoHero.map((_, i) => (
-        <button
-          key={i}
-          type="button"
-          aria-pressed={i === atual}
-          onClick={() => setAtual(i)}
-          className={cn(
-            "grid size-10 place-items-center rounded-full text-base tabular-nums transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none motion-reduce:transition-none",
-            i === atual
-              ? "bg-primary font-medium text-primary-foreground"
-              : "text-foreground/80 hover:bg-muted"
-          )}
-        >
-          {i + 1}
-        </button>
-      ))}
-    </div>
+      <ArrowLeftRightIcon aria-hidden className="size-4" />
+    </button>
   );
 }

@@ -81,7 +81,7 @@ export function FechoV1() {
               alt={fotoFecho.alt}
               fill
               sizes="(max-width: 1023px) 100vw, 58vw"
-              className="object-cover object-center"
+              className="object-cover object-center saturate-[0.7]"
             />
           </figure>
         </Revelar>

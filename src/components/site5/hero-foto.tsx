@@ -2,11 +2,7 @@ import { ArrowDownIcon } from "lucide-react";
 
 import { Container, Sobretitulo } from "@/components/site/layout/section";
 import { WhatsAppGlyph } from "@/components/site5/glifos";
-import {
-  FotoHero,
-  SeletorFotoHero,
-  TrocaFotoHero,
-} from "@/components/site5/troca-foto-hero";
+import { FotoHero } from "@/components/site5/troca-foto-hero";
 import { Button } from "@/components/ui/button";
 import { whatsappHref } from "@/lib/site5/contato";
 import { home } from "@/lib/site5/conteudo";
@@ -46,10 +42,7 @@ export function HeroFoto() {
   const [paragrafo1, paragrafo2] = home.hero.paragrafos;
 
   return (
-    <TrocaFotoHero>
     <section className="relative isolate overflow-hidden bg-background">
-      {/* Comparação de fotos pedida em 26/11/2026 — sai quando o cliente escolher. */}
-      <SeletorFotoHero className="absolute top-22 right-4 md:right-6" />
 
       {/* Desktop — foto de fundo a 50%, ancorada à esquerda. Decorativa.
           Teste de 29/09/2026: era `opacity-30`; subiu 20 pontos (5 + 15) para clarear
@@ -151,6 +144,5 @@ export function HeroFoto() {
         </div>
       </Container>
     </section>
-    </TrocaFotoHero>
   );
 }
